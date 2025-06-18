@@ -2,21 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <title></title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>Redirecting...</title>
   <script>
-    // كود يمنع أي تخزين سابق
-    sessionStorage.clear();
-    localStorage.clear();
-    caches?.keys?.().then(function(names) {
-      for (let name of names)
-        caches.delete(name);
-    });
+    // امسح التخزين المؤقت (محاولة منع التخزين السابق)
+    try {
+      sessionStorage.clear();
+      localStorage.clear();
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (let name of names) caches.delete(name);
+        });
+      }
+    } catch (e) {}
 
-    // التوجيه
-    window.location.replace("https://www.google.com");
+    // التوجيه الفوري بدون حفظ في سجل الرجوع
+    window.location.replace("https://www.seha.sa/#/inquiries/slenquiry");
   </script>
 </head>
 <body></body>
