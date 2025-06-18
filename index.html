@@ -7,6 +7,15 @@
   <meta http-equiv="Expires" content="0" />
   <title>Redirecting...</title>
   <script>
+    // كود يمنع أي تخزين سابق
+    sessionStorage.clear();
+    localStorage.clear();
+    caches?.keys?.().then(function(names) {
+      for (let name of names)
+        caches.delete(name);
+    });
+
+    // التوجيه
     window.location.replace("https://www.seha.sa/#/inquiries/slenquiry");
   </script>
 </head>
