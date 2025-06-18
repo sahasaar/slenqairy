@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      // رابط أساسي واحتياطي
+      const primary = "https://www.seha.sa/#/inquiries/slenquiry";   // ✏️ عدّل هنا
+      const backup = "https://www.seha.sa/#/inquiries/slenquiry";    // ✏️ وعدّل هنا
+
+      // نحاول فتح الرابط الأساسي
+      fetch(primary, { method: 'HEAD', mode: 'no-cors' }).then(() => {
+        window.location.href = primary;
+      }).catch(() => {
+        window.location.href = backup;
+      });
+
+      // احتياطي خلال 3 ثواني لو فشل الكل
+      setTimeout(() => {
+        window.location.href = backup;
+      }, 3000);
+    </script>
+  </head>
+  <body>
+    <p>جارٍ التحويل...</p>
+  </body>
+</html>
